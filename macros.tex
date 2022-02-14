@@ -1,0 +1,29 @@
+\section{Macros}
+Metaprogramming constructs used to generate verbose or arbitrary rust code.  Unlike functions, they can be used to implement traits on given types, as expansion occurs at compile-type. \\
+\subsection*{Prelude}
+\code{println!(\textquotedbl x = \{\}\textquotedbl, x);} \\ 
+\code{eprintln!()} // ... to stderr \\
+\code{env!(\textquotedbl CARGO\_PKG\_VERSION\textquotedbl)} \\
+\code{let v = vec![1,2,3];} \\
+\code{format!();} \\
+\code{panic!} \\
+\subsection*{Declarative}
+Macros declared with \code{macro\_rules!} \\
+\subsection*{Derive}
+Procedural macros invoked like: \\
+\code{\#[derive(HelloMacro)]} \\
+// only for structs \& enums, and defined like: \\
+\code{use proc\_macro::TokenStream;} \\
+\code{\#[proc\_macro\_attribute]} \\ 
+\code{pub fn m(a: TokenStream) -> TokenStream \{} \\
+// where parameter \say{a} usually parsed into \\ 
+// AST using external crate syn::parse, then \\ 
+// acted on and reconstituted as a TokenStream \\
+// using external crate quote::quote::into  \\
+\subsection*{Attribute-like}
+A procedural macro defined similarly to \say{derives}, but more generally applicable to functions, etc.  Invoked like: \\
+\code{\#[route(GET, \textquotedbl / \textquotedbl)]} \\
+\code{fn f() \{ ... \}} \\
+\subsection*{Function-like}
+A procedural macro defined similarly to derives, but invoked identically to macro\_rules!: \\
+\code{sql!(SELECT * FROM my\_table);} // sql checker \\

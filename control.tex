@@ -1,0 +1,27 @@
+\section{Control}
+\subsection*{Conditional}
+\code{if (x < 5) \{\} else if(y == true) \{\} else \{\}} \\
+\code{let x = if (y = true) \{ 5 \} else \{ 6 \};} \\ 
+\subsection*{Looping}
+\code{loop\{ ... ; break ; \}} // explicit break \\ 
+\code{while(num !=0 )\{ ... \}} // break implied \\
+\code{for a in b.iter() \{ ... \}} \\
+\subsection*{Matching}
+// single, non-exhaustive pattern match \\
+\code{if let Some(3) = <var> \{ println!(); \}} \\
+// exhaustive match \\
+\code{match coin \{} \\
+\code{\phantom{xx}    Coin::Nickel => 5,} // a match \say{arm} \\
+\code{\phantom{xx}    Coin::Dime => 10,} // second match arm \\
+\code{\phantom{xx}    Coin::Quarter(state) =>} // arm\textquotesingle s \say{pattern}\\
+\phantom{xxxx}      // block for arm's \say{expression}\\
+\code{\phantom{xxxx}      \{ println!(\textquotedbl Is from \{:?\}!\textquotedbl, state);   25 \},} \\
+\code{\phantom{xx}    \_,} // catch-all, ensuring exhaustivity \\
+\code{\}} \\
+// in loops:  \\
+\code{while let Some(top) = stack.pop() \{ ... \}} \\
+\code{for (index, value) in v.iter().enumerate() \{ ... \}} \\
+// elsewhere, unnoticeably: \\
+\code{let x = 5;} // stmt is an \say{irrefutable} match \\
+\code{let (x, y, \_) = (1, 2, 3);} // ... more visibly so \\
+\code{fn f(x: i32) \{} // x is pattern, eg could use a tuple \\

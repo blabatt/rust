@@ -1,0 +1,98 @@
+\section{Types}
+\subsection*{Numeric}
+Integers: 
+\begin{tabular}{l l}
+    Signed & Unsigned   \\
+    \code{i8} & \code{u8} \\  
+    \code{i16} & \code{u16} \\  
+    \code{i32} & \code{u32} \\  
+    \code{i64} & \code{u64} \\  
+    \code{isize} & \code{usize} \\  
+\end{tabular} \\
+Floats: 
+\begin{tabular}{l l}
+    \code{f32} & \code{f64} \\  
+\end{tabular} \\
+\subsection*{Scalar}
+// Numerics are all Scalar \& implement Copy \\
+\code{bool} \hspace{7mm} impl Copy \\
+\code{char} \hspace{7mm} impl Copy \\
+\phantom{xxxx} \code{.is\_[digit|whitespace|...]()} \\
+\phantom{xxxx} \code{.is\_ascii\_[digit|uppercase|...]()} \\
+\phantom{xxxx} \code{.[len|encode]\_utf[8|16]()} \\
+
+\subsection*{Compound}
+\code{tuple} \hspace{11mm} impl Copy \\
+\begin{tabular}{c c c c}
+   \phantom{x} & \code{.push()} & \code{.push()} & \code{.push()} \\
+\end{tabular} \\ 
+\code{array[T; N]} \\
+\begin{tabular}{c c c c}
+   \phantom{x} & \code{.push()} & \code{.push()} & \code{.push()} \\
+\end{tabular} \\ 
+
+\subsection*{Collection}
+\begin{tabular}{ p{2mm} p{10mm} p{10mm} p{10mm}}
+   \phantom{x} & \code{.collect()} & \code{.get()} & \code{.len()} \\
+\end{tabular} \\ 
+\code{std::vec::Vec<T>} \\
+\begin{tabular}{ p{2mm} p{10mm} p{10mm} p{10mm}}
+   \phantom{x} & \code{.push()} & \code{.pop()} & \\
+\end{tabular} \\ 
+\code{std::string::String} \\
+\begin{tabular}{ p{2mm} p{10mm} p{10mm} p{10mm}}
+   \phantom{x} & \code{.push()} & \code{.chars()} & \code{.bytes()} \\
+\end{tabular} \\ 
+\code{std::collections::HashMap<K,V>} \\
+\begin{tabular}{ p{2mm} p{10mm} p{10mm} p{10mm}}
+   \phantom{x} & \code{.insert()} & \code{.entry()} & \code{.or\_insert()} \\
+\end{tabular} \\ 
+
+\subsection*{Monadic}
+\code{std::option::Option<T>} \\
+\begin{tabular}{ p{2mm} p{10mm} p{10mm} p{10mm}}
+   \phantom{x} & \code{.push()} & \code{.push()} & \code{.push()} \\
+\end{tabular} \\ 
+%\phantom{xxxx} .push() \\
+%\phantom{xxxx} .push() \\
+%\phantom{xxxx} .push() \\
+\code{std::result::Result<T,E>} \\
+\begin{tabular}{ p{2mm} p{10mm} p{10mm} p{10mm}}
+   \phantom{x} & \code{.unwrap()} & \code{.expect()} &  \\
+\end{tabular} \\ 
+%\phantom{xxxx} .unwrap() \\
+%\phantom{xxxx} .expect() \\
+
+\subsection*{Smart Pointer}
+\code{std::boxed::Box<T>} // smart pointer \\
+\begin{tabular}{ p{2mm} p{17mm} p{15mm}}
+   \phantom{x} & \code{.push()} & \code{.push()} \\
+\end{tabular} \\ 
+\code{std::rc::Rc<T>} // reference counter \\ 
+\begin{tabular}{ p{2mm} p{17mm} p{16mm} }
+   \phantom{x} & \code{.weak\_count()} & \code{.strong\_count()} \\
+\end{tabular} \\ 
+\code{std::cell::RefCell<T>} // internal mutability \\
+\begin{tabular}{ p{2mm} p{17mm} p{16mm}}
+   \phantom{x} & \code{.borrow\_mut()} & \code{.push()} \\
+\end{tabular} \\ 
+\code{std::thread::JoinHandle} // thread reference \\
+\begin{tabular}{ p{2mm} p{17mm} p{15mm}}
+   \phantom{x} & \code{.push()} & \code{.push()} \\
+\end{tabular} \\ 
+\code{std::sync::Mutex<T>} // mutually-exclusive \\
+\begin{tabular}{ p{2mm} p{17mm} p{15mm}}
+   \phantom{x} & \code{.push()} & \code{.push()} \\
+\end{tabular} \\ 
+\code{std::sync::Arc<T>} // atomic reference counter \\
+\begin{tabular}{ p{2mm} p{17mm} p{15mm}}
+   \phantom{x} & \code{.push()} & \code{.push()} \\
+\end{tabular} \\ 
+
+\subsection*{Advanced}
+// \say{never} types require no type matching \\
+\code{fn f(a: usize) -> ! \{} // return is \say{never} type \\
+// creating synonyms for long type annotations: \\
+\code{type Thunk = Box<dyn Fn() + Send + 'static>;} \\
+// Generics cannot  use dynmically sized types \\
+\code{fn generic<T>(t: T) \{ ... \}} // <T: Sized> inferred \\ 

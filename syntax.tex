@@ -1,0 +1,36 @@
+\section{Syntax}
+\subsection*{Variable Assignment}
+\code{let x = 5;} // immutable binding \\
+\code{let mut x = 5;} // mutable binding \\
+\code{let tuple = ("hello", 5, 'c');} // tuple \\
+\code{let (x,y,z) = tuple;} // deconstruction \\
+\code{const PI = 3.1415;} // immutable literal \\
+// type parameterization: \\
+\code{let v: Vec<i32> = Vec::new();} \\
+
+\subsection*{Functions \& Parameters}
+\code{fn main() {}} // simple declaration \\
+\code{fn f(x: i32) {}} // parameter type declaration \\
+\code{fn f() -> i32 {}} // return type declaration \\
+\code{|p| \{ ... \}} // anonymous function \\
+// type annotations, like following are inferred: \\
+\code{|p: i32| -> String \{ ... \}} // usually unnecessary \\
+
+\subsection*{Structs \& Enums}
+\code{struct MyStruct \{ name: String, flag: bool, \}} \\
+\code{enum MyEnum \{ Variant1, Variant2, Variant3, \}} \\
+\code{impl MyStruct \{ fn myMeth()\{ ... \}; \}} // method \\
+
+\subsection*{References \& Pointers}
+\code{v = 5; \&r = v; println!(r);} // 5 \\
+// Rust uses automatic dereferencing: \\
+\code{p1.mthd(\&p2) == (\&p1).mthd(\&p2);} // true \\
+// \say{Smart} Pointers: \\
+\code{sp1 = Box::new(5); println!(sp1,*sp1);} // 5 5 \\
+// \say{Raw} Pointers: \\
+\code{*rp1 = 5; println!(*rp1);} // 5 ... but unsafe! \\
+\subsection*{Comments}
+\code{// This is a comment} \\
+\code{/* This is a multi-line comment */} \\
+\code{//! Inner line doc comment}  \\ 
+\code{/// Outer line doc comment}  \\

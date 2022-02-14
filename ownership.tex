@@ -1,0 +1,34 @@
+\section{Ownership}
+Ownership passes when new binding occurs.  This is called a \say{move}.  To avoid owning, use \say{borrowed} references instead. If copy trait is implemented, moves are obviated. \\
+
+\subsection*{Borrowing}
+\code{let var1 = \&x;} // immutable borrow \\
+\code{let var2 = \&mut x;} // mutable borrow \\
+\code{let slice = \&s[6..11];} // slice of string s\\
+// pass by [borrowed] reference: \\
+\code{let var3 = my\_func( \&concrete );} \\
+// Note: spawned threads can't generally \\
+// borrow because lifetime in parent is \\
+// not guaranteed. \\
+
+\subsection*{Moving}
+// Force ownership into closure with \say{move}: \\
+\code{let c = move |z| z == x; // (aka a \say{capture})} \\
+
+\subsection*{Dropping}
+// \say{drop} forces relinquishment of ownership:
+\code{drop(var);} // drop is in \code{std::mem::drop} \\
+
+\subsection*{Lifetimes}
+
+\code{\&\textquotesingle a i32} // basic annotation \\
+\code{fn f<\textquotesingle a>(x: \&str, y: \&\textquotesingle a str) -> \&\textquotesingle a str \{} // in sig.
+\code{struct s<\textquotesingle a> \{} // on structs \\
+\code{\textquotesingle static} // static \\
+\subsection*{Lifetime Elision Rules} 
+Given sets $P$, $L$, $OL$ for parameters, lifetimes, output lifetime, respectively:
+\begin{enumerate}
+    \item $\forall P \exists L $ \say{each param. has a lifetime}
+    \item $\abs{L} = 1 \implies OL = L(0)$ \\ \say{output lifetime is same as a solitary input lifetime}
+    \item $\exists$ \&self $\in P \implies OL = L(self)$ \\ \say{\&self's lifetime taken by default as output lifetime}
+\end{enumerate} \

@@ -1,0 +1,41 @@
+\section{Documentation}
+\subsection*{rustdoc}
+\begin{itemize}[label={}]
+    %\item --input-format
+    %\item --output-format
+    \item --output // target location
+    \item --crate-name 
+    \item --library-path
+    \item --cfg
+    \item --extern // explicit depend. loc.
+    %\item --codegen
+    \item --passes // run these passes
+    \item --no-defaults // no default passes
+    \item --test // run examples as unit tests
+    \item --test-args
+    \item --target
+    \item --markdown-css
+    \item --html-in-header
+    %\item --html-[before|after]-content
+    \item --markdown-playground-url
+    %\item --markdown-no-toc
+    %\item --extend-css
+    %\item --sysroot
+\end{itemize} \ 
+\\
+\subsection*{Inline}
+\code{/// \textasciigrave\textasciigrave\textasciigrave <executable\_code> \textasciigrave\textasciigrave\textasciigrave} \\
+\code{/// \textasciigrave\textasciigrave\textasciigrave \# <hidden\_code> \textasciigrave\textasciigrave\textasciigrave} \\
+\code{/// \textasciigrave\textasciigrave\textasciigrave should\_panic <code> \textasciigrave\textasciigrave\textasciigrave} \\
+\code{/// \textasciigrave\textasciigrave\textasciigrave no\_run <code> \textasciigrave\textasciigrave\textasciigrave} \\
+\code{/// \textasciigrave\textasciigrave\textasciigrave compile\_fail <code> \textasciigrave\textasciigrave\textasciigrave} \\
+\subsection*{Control}
+// Crate-level attributes: \\
+\code{\#![doc(html\_playground\_url = \textquotedbl a.com\textquotedbl)]} \\
+\code{\#![doc(html\_root\_url = \textquotedbl a.com\textquotedbl)]} \\
+\code{\#![doc(html\_no\_source)]} \\
+\code{\#![doc(test(attr(deny(warnings))))]} \\
+\code{\#![doc(no\_inline)]} \\
+// Item level attributes: \\
+\code{\#[doc(hidden)]} \\
+\code{\#[doc = \textquotedbl comment\textquotedbl]} \# /// is sugar \\

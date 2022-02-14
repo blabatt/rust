@@ -1,0 +1,48 @@
+\section{Tools}
+common flags:
+\begin{itemize}[label={}]
+    \item --help
+    \item --version
+    \item --verbose
+\end{itemize}
+\subsection*{rustup}
+\code{component add <comp\_name>}\\
+\code{update stable} \\
+\subsection*{cargo}
+\begin{itemize}[label={}]
+    \item --release // default is --debug
+    \item --list
+    \item --locked
+    \item --frozen // don\textquotesingle t touch network
+\end{itemize}
+\code{build} \\
+\code{bench} // performance testing \\
+\code{check} // verify compile-ability \\
+\code{clean} // remove old target dir\textquotesingle s artifacts \\
+\code{clippy} // linter, must first install \\
+\code{doc} // invoke rustdoc \\
+\fboxsep1pt
+\code{fetch} // update cache of Cargo.lock depend\textquotesingle s \\
+\code{fix} // apply accept rustc warning suggestions \\
+\code{fmt} // invoke rustfmt formatter \\ 
+\code{init} [--lib|--bin] // new package, existing dir \\[0pt]
+\code{[un]install} // a rust binary \\
+\code{login} // locally cache crates.io API token \\
+\code{new} [--lib|--bin] // new package \& dir. \\
+\code{package} // create distributable tarball \\
+\code{publish} // ... to crates.io \\
+\code{run} \\
+\code{search} // in crates.io \\
+\code{test} [[name] -- [--test-threads=1][--nocapture]] \\
+\code{update} // create Cargo.lock from .toml \& fetch \\
+\code{vendor} // vendor depend\textquotesingle s to specified path\\
+\code{yank} // ... release from crates.io \\
+
+\subsection*{\href{https://doc.rust-lang.org/rustdoc/what-is-rustdoc.html}{rustdoc}}
+\textit{See separate Code Documentation cheatsheet.}
+\ \\
+\subsection*{\href{https://github.com/rust-lang/rustfmt}{rustfmt}}
+\textit{Idiomatic, cosmetic $\Delta$s to source code as written or displayed. Configurable on cmd line or in \codein{rustfmt.toml} file:}\\
+\entry{35mm}{\href{https://rust-lang.github.io/rustfmt/?search=\#wrap\_comments}{wrap\_comments} = true}{wrapping}\\
+\entry{35mm}{\href{https://rust-lang.github.io/rustfmt/?search=\#comment\_width}{comment\_width} = 80}{config $\uparrow$ this}\\
+\ \\

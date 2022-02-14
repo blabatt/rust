@@ -1,0 +1,36 @@
+\section{Idioms}
+\subsection*{Statement-Orientation}
+// bind to statement eval \\
+\code{let y = \{ let x = 4; x + 1 \}} \\
+\subsection*{Collections}
+// Vector of differing \say{types} \\
+\code{enum a \{Int(i32),} \\ \phantom{xxxx} \code{Float(f64),} \\ \phantom{xxxx} \code{Text(String),\}} \\
+\code{let b = vec!(a::Int(3), } \\ \phantom{xxxx} \code{a::Float(3.1), } \\ \phantom{xxxx} \code{a::Text(String::from("3.2")));} \\
+\subsection*{Error Handling}
+// Error propagation: \\
+\code{let mut f = File::open("hello.txt");} \\
+\code{f = match f \{} \\
+    \phantom{xxxx} \code{Ok(file) => file, } \\
+    \phantom{xxxx} \code{Err(e) => return Err(e), } \\
+\code{\};} // ... is equivalent to ... \\
+\code{let mut f = File::open("hello.txt")?;} \\
+\subsection*{Concurrency}
+// threads \& channels: \\
+\code{let handle = std::thread::spawn(|| \{ ... \} );} \\
+\code{let (tx, rc) = std::sync::mpsc::channel();} \\
+// spawn returned a Result<JoinHandle,\_> \\
+\code{handle.join().unwrap();} \\
+\subsection*{Unsafe}
+// 5 unsafe \say{superpowers} \\
+\code{let mut num = 5;} \\
+\code{let r1 = \&num as *const i32;} // raw pointer \\
+\code{let r2 = \&mut num as *mut i32;} // note \say{as} \\ 
+\code{unsafe \{} // unsafe actions only allowed here \\
+    \phantom{xx} \code{println!("r1 is: {}", *r1);} // (1) derefencing \\
+    \phantom{xx} \code{println!("r2 is: {}", *r2);} // raw pointer \\
+\code{\}} \\
+\code{unsafe fn dangerous() \{...\}} // (2) unsafe func. \\
+// (3) employing unsafe \say{FFI} call (here, C): \\ 
+\code{ extern "C" \{ fn abs(x: i32) -> i32; \}}  \\ 
+\code{ static mut CTR: u32 = 0;} // (4) mut global \\ 
+\code{unsafe trait Foo \{ ... \}} // (5) unsafe trait \\

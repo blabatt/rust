@@ -1,0 +1,55 @@
+\section{Dependencies}
+Update Cargo.toml [dependencies] section 
+for inclusion of ancillary crates: \\[0pt]
+\code{[dependencies]} \\
+\code{rand = \textquotedbl 0.5.5 \textquotedbl} // crates.io dependency \\
+// uses \say{semver}; can operate with \textasciitilde \textasciicircum * >= \\
+\code{my\_mod = \{ path = \textquotedbl ../rel/path\textquotedbl \}} // filesyst. \\
+// Or fetch, build, \& include from source: \\
+\code{git clone *.com/rust-lang-nursery/rand.git} \\
+\code{cd rand; cargo build} \\
+// above re-issues cargo.lock, so that refs to \\
+// specific SHAs as follows are unnecessary: \\[0pt]
+\code{rand = \{ } \\ 
+\code{ \phantom{xxx} git = \textquotedbl *.com/rust-lang-nursery/rand.git \textquotedbl,} \\ 
+\code{ \phantom{xxx} rev = \textquotedbl 9f35b8e\textquotedbl} // can also use branch = ...\\
+\code{\}} \\
+// dependency graph low-level manipulation:\\[0pt]
+\code{[patch.crates-io]} // or [patch.\textquotedbl abc.com\textquotedbl] \\
+\code{uuid = \{ git = \textquotedbl *.com/rust-lang-nursery/uuid\textquotedbl ,} \\
+\code{\phantom{xxx} branch = \textquotedbl 2.0.0\textquotedbl \}} \\
+// development \& build dependencies: \\[0pt]
+\code{[dev-dependencies]} \\
+\code{tempdir = \textquotedbl 0.3\textquotedbl} // used on test, example, bench \\[0pt]
+\code{[build-dependencies]} \\
+\code{cc = \textquotedbl 1.0.3\textquotedbl} // script used only in build \\
+// use non-crates.io repository: \\[0pt]
+\code{[registries]} \\
+\code{my-registry = \{} \\
+\code{\phantom{xxx} index = \textquotedbl https://my-intranet:8080 \textquotedbl \}} \\[0pt]
+\code{[dependencies]} \\
+\code{other-crate = \{ \\
+\code{\phantom{xxx} version =} \textquotedbl 1.0 \textquotedbl ,} \\
+\code{\phantom{xxx} registry = \textquotedbl my-registry \textquotedbl \}} \\
+\subsection*{Modules}
+\code{mod fn my\_function1()\{\};} // private \\
+\code{pub mod fn my\_function2()\{\};} // public \\
+// Module in another file, still need to \say{use}: \\
+\code{mod file\_name;} \\
+\subsection*{Paths}
+\code{use absolute::path::to::module;} \\
+\code{use relative\_path::to::\{mod1, mod2\};} \\
+\code{use path::to::\{sub\_path::mod1, mod2\};} \\
+\code{use std::io::Result as IoResult;} // aliasing \\
+\code{pub use rand::Rng;} // \say{re-exporting} \\
+
+\subsection*{Crates}
+<crate> = <lib\_crate> | <bin\_crate> \\
+
+\subsection*{Packages}
+Packages contain ($\ni$) crates, according to:
+\begin{itemize}[label={}]
+\item $\forall$ packages $\ni$ <crate>+ 
+\item $\forall$ packages $\ni$ <lib\_crate>? 
+\item $\forall$ packages $\ni$ <bin\_crate>* 
+\end{itemize} \

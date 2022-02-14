@@ -1,0 +1,15 @@
+\section{Attributes}
+\subsection*{Documentation}
+\#[doc = \textquotedbl comment\textquotedbl] or /// \\
+\#![doc(html\_playground\_url = \textquotedbl a.com\textquotedbl)] \\
+\#![doc(html\_root\_url = \textquotedbl a.com\textquotedbl)] \\
+\#[doc(html\_no\_source)] \\
+\#[doc(test(attr(deny(warnings))))] \\
+\#[doc(no\_inline)] \\
+\#[doc(hidden)] \\
+\subsection*{Testing}
+\#[cfg(test)] // selectively compile, per arg. \\
+\#[test] \\
+\#[derive(PartialEq, Debug)] // derive traits
+\#[should\_panic] // optional arg. (expect = "...")
+\#[ignore]

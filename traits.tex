@@ -1,0 +1,59 @@
+\section{Traits}
+\subsection*{Implementations}
+\code{impl my\_struct \{...} // simple method \\
+\code{impl my\_trait for my\_struct \{} // impl. a trait \\
+\code{impl<T> Point<T> \{...} // generic impl. \\
+// interfaces \& defaults \\
+\code{pub trait Summary \{} \\ 
+\code{    \phantom{xx} // unimplemented interface:} \\
+\code{    \phantom{xx} fn summarize\_auth(\&self) -> String;} \\
+\code{    \phantom{xx} // default implementation:} \\
+\code{    \phantom{xx} fn summarize(\&self) -> String} \\
+\code{    \phantom{xxxx} \{ println!("..."); \}} \\
+\code{\}} \\
+\subsection*{Generics}
+\code{fn g1<T>(p: T) \{ ...} //as param \\
+\code{fn g2<T>(p: T) -> T \{ ...} // gen. return \\
+\code{struct Point<T, U> \{} // on structs \\
+\code{enum Result<T, E> \{} // on enums \\
+\subsection*{Trait Bounds}
+\code{fn f<T: my\_trait>(p: T) \{} // long-form \\
+\code{fn f(p: impl my\_trait) \{} // sugar\textquotesingle ed bounds \\
+\code{fn f<T: my\_trait1 + my\_trait2>(p: T) \{} // mult. \\
+\code{fn f<T: Fn(u32) -> u32> \{ ...} // closure bounds \\
+// complex bounds using \say{where} \\
+\code{fn f<T, U>(t: T, u: U) -> i32} \\
+\code{    \phantom{xx} where T: Display + Clone,} \\
+\code{        \phantom{xxxxxxxx}  U: Clone + Debug \{ ... \} } \\
+// type-conditional implementations: \\
+\code{impl<T> Pair<T> \{ ... \}} // ... and later ... \\
+\code{impl<T: Display + PartialOrd> Pair<T> \{ ... \}} \\
+\code{impl<T: Display> ToString for \{} // \say{blanket} \\
+\subsection*{Common Traits}
+\begin{tabular}{l l l}
+    Copy & Clone & Hash  \\
+    Display & Debug \\
+    From & Into \\
+    Deref[Mut] & Borrow[Mut] & Drop \\
+    Read & Write & ReadBuf \\[0pt] 
+    [Partial]Ord & [Partial]Eq & \\
+    Iterator & IntoIterator \\
+    Fn & FnMut & FnOnce \\
+    Future & Generator & \\
+    Error & & \\
+    BitAnd & BitOr & Not \\
+    Send & Sync & \\
+\end{tabular} \
+\\
+\subsection*{Trait Objects}
+TOs relax generics' restriction (as Rust implements them) whereby only a single concrete type will be substituted at compile-time per: \\ 
+monomorphism : static dispatch : generics :: \\
+polymorphism : dynamic dispatch : trait objects
+\\
+\code{Box<dyn Draw>} // type must implement Draw \\
+
+\subsection*{Advanced}
+// Associated Types \\
+// Default Generic Types \\ 
+// Supertraits \\
+// Newtype pattern \\

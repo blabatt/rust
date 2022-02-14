@@ -1,0 +1,19 @@
+\section{Testing}
+\subsection*{General Pattern}
+// Inline unit tests alongside source code: \\
+\code{\#[cfg(test)]} \\
+\code{mod tests \{} \\
+\code{    \phantom{xx} \#[test]} \\
+\code{    \phantom{xx} fn test\_name1()}  
+\code{    \{ assert!(a == b); \}} \\ 
+\code{\}} \\
+// Whereas int. tests go in own \say{test} dir. \\
+\subsection*{Assertions}
+\code{assert!} \\
+\code{assert\_[ne|eq]!} \\
+\subsection*{Control}
+\code{\#[cfg(test)]} // selectively compile, per arg. \\
+\code{\#[test]} \\
+\code{\#[derive(PartialEq, Debug)]} // derive traits
+\code{\#[should\_panic]} // optional arg. (expect = "...")
+\code{\#[ignore]} \\
